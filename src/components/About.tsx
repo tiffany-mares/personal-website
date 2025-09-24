@@ -51,9 +51,9 @@ const About = () => {
             </p>
             
             <p className="text-lg text-muted-foreground leading-relaxed">
-              As <span className="text-primary font-semibold">Vice President of the <span className="cursor-pointer hover:text-primary/80 hover:underline transition-colors duration-200" onClick={() => window.open("https://www.linkedin.com/company/uog-cepssc/posts/?feedView=all", "_blank")}>College of Computing</span></span>, 
-              <span className="text-primary font-semibold"> Co-founder and President of the Cloud Computing Club</span>, and 
-              <span className="text-primary font-semibold"> IBM Z Student Ambassador</span>, I'm passionate about bridging modern cloud technologies with 
+              As <span className="text-primary font-semibold underline decoration-2 underline-offset-2 cursor-pointer hover:text-primary/80 hover:decoration-primary/80 transition-all duration-200" onClick={() => window.open("https://www.linkedin.com/company/uog-cepssc/posts/?feedView=all", "_blank")}>Vice President of the College of Computing</span>, 
+              <span className="text-primary font-semibold underline decoration-2 underline-offset-2 cursor-pointer hover:text-primary/80 hover:decoration-primary/80 transition-all duration-200" onClick={() => window.open("http://linkedin.com/posts/tiffanymares_cloudcomputing-ai-aws-activity-7376078359983943680-LU8n/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEogt0ABMF03rdl7d47Um3jWsXvZ5aKMNVg", "_blank")}> Co-founder and President of the Cloud Computing Club</span>, and 
+              <span className="text-primary font-semibold underline decoration-2 underline-offset-2 cursor-pointer hover:text-primary/80 hover:decoration-primary/80 transition-all duration-200" onClick={() => window.open("https://www.linkedin.com/company/ibm-z-student-ambassador/posts/?feedView=all", "_blank")}> IBM Z Student Ambassador</span>, I'm passionate about bridging modern cloud technologies with 
               traditional enterprise systems while fostering inclusive communities in technology. 🙌
             </p>
           </div>

@@ -1,5 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Calendar, MapPin, Users, ExternalLink } from "lucide-react";
 
 const Organizations = () => {
@@ -19,7 +20,25 @@ const Organizations = () => {
         </div>
       ),
       type: "Leadership",
-      logo: "/lovable-uploads/b1f50a53-63f5-4696-a64a-17a1c745264b.png"
+      logo: "/lovable-uploads/cloud-computing-club-logo.png"
+    },
+    {
+      name: "Guelph Women in Computer Science",
+      role: "President",
+      period: "September 2025 – Present",
+      location: "University of Guelph",
+      description: (
+        <div className="space-y-2">
+          <div>• Lead <span className="text-blue-400 font-medium">executive team</span> and oversee all <span className="text-blue-400 font-medium">club operations & strategic direction</span></div>
+          <div>• Organized <span className="text-blue-400 font-medium">mentorship circles, technical workshops, and networking panels</span> with industry professionals</div>
+          <div>• Fostered <span className="text-blue-400 font-medium">inclusive spaces</span> for women and gender-minority students in computing</div>
+          <div>• Advocated for <span className="text-blue-400 font-medium">equity and representation in Computer Science</span> through collaboration with faculty and student councils</div>
+          <div>• Created <span className="text-blue-400 font-medium">professional development opportunities</span> (career talks, skills workshops, resume reviews)</div>
+          <div>• Built <span className="text-blue-400 font-medium">partnerships with external organizations</span> to expand resources and opportunities for members</div>
+        </div>
+      ),
+      type: "Leadership",
+      logo: "/lovable-uploads/gwics-logo.png"
     },
     {
       name: "IBM Z Student Ambassador Program",
@@ -83,10 +102,22 @@ const Organizations = () => {
         {organizations.map((org, index) => (
            <Card 
              key={index} 
-             className={`bg-card/50 backdrop-blur-sm border-border hover:shadow-[var(--card-glow)] transition-all duration-300 ${
-               org.name === "College of Computing" ? "cursor-pointer hover:scale-105 hover:border-primary/50 hover:bg-primary/5 hover:shadow-xl" : ""
-             }`}
-             onClick={org.name === "College of Computing" ? () => window.open("https://www.linkedin.com/company/uog-cepssc/posts/?feedView=all", "_blank") : undefined}
+              className={`bg-card/50 backdrop-blur-sm border-border hover:shadow-[var(--card-glow)] transition-all duration-300 ${
+                org.name === "College of Computing" || org.name === "Guelph Women in Computer Science" || org.name === "Cloud Computing Club" || org.name === "IBM Z Student Ambassador Program"
+                  ? "cursor-pointer hover:scale-105 hover:border-primary/50 hover:bg-primary/5 hover:shadow-xl" 
+                  : ""
+              }`}
+              onClick={
+                org.name === "College of Computing" 
+                  ? () => window.open("https://www.linkedin.com/company/uog-cepssc/posts/?feedView=all", "_blank")
+                  : org.name === "Guelph Women in Computer Science"
+                  ? () => window.open("https://www.linkedin.com/posts/tiffanymares_leadership-womeninstem-wics-activity-7376057599152218113-owSW/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEogt0ABMF03rdl7d47Um3jWsXvZ5aKMNVg", "_blank")
+                  : org.name === "Cloud Computing Club"
+                  ? () => window.open("https://www.linkedin.com/posts/tiffanymares_cloudcomputing-ai-aws-activity-7376078359983943680-LU8n/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEogt0ABMF03rdl7d47Um3jWsXvZ5aKMNVg", "_blank")
+                  : org.name === "IBM Z Student Ambassador Program"
+                  ? () => window.open("https://www.linkedin.com/company/ibm-z-student-ambassador/posts/?feedView=all", "_blank")
+                  : undefined
+              }
            >
             <CardHeader>
               <div className="flex items-start justify-between">
@@ -129,6 +160,34 @@ const Organizations = () => {
             </CardHeader>
             
             <CardContent>
+              {org.name === "Cloud Computing Club" && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="mb-4 w-full"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    window.open("https://www.linkedin.com/posts/tiffanymares_cloudcomputing-ai-aws-activity-7376078359983943680-LU8n/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEogt0ABMF03rdl7d47Um3jWsXvZ5aKMNVg", "_blank");
+                  }}
+                >
+                  <ExternalLink className="w-4 h-4 mr-2" />
+                  View My LinkedIn Post
+                </Button>
+              )}
+              {org.name === "Guelph Women in Computer Science" && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="mb-4 w-full"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    window.open("https://www.linkedin.com/posts/tiffanymares_leadership-womeninstem-wics-activity-7376057599152218113-owSW/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEogt0ABMF03rdl7d47Um3jWsXvZ5aKMNVg", "_blank");
+                  }}
+                >
+                  <ExternalLink className="w-4 h-4 mr-2" />
+                  View My LinkedIn Post
+                </Button>
+              )}
               <div className="text-foreground leading-relaxed">{org.description}</div>
             </CardContent>
           </Card>

@@ -11,6 +11,14 @@ const Certifications = () => {
     description: "Recognition badge demonstrating understanding of IBM Z mainframe concepts and technologies",
     skills: ["IBM Z", "z/OS", "JCL", "RACF", "CICS", "IMS", "Db2", "MQ", "COBOL", "REXX"],
     credentialUrl: "https://www.credly.com/badges/0c9ade46-9ebd-4c64-b1f8-a2402d18f3a2/public_url"
+  }, {
+    title: "BMO AI for All",
+    issuer: "BMO",
+    date: "2025",
+    status: "Active",
+    description: "Demonstrated understanding of AI/ML fundamentals, explored ethical considerations and trustworthiness in AI systems, applied AI tools for data-driven problem solving, and equipped to support responsible AI initiatives",
+    skills: ["AI/ML", "Machine Learning", "Artificial Intelligence", "Ethics in AI", "Data Science", "Problem Solving", "Responsible AI"],
+    credentialUrl: "https://www.credly.com/badges/45c43414-a4a5-4172-a7aa-3640e6bda319/public_url"
   }];
   return <div className="py-20">
       <div className="text-center mb-16">
@@ -35,10 +43,20 @@ const Certifications = () => {
                       View My Credly Badge from IBM
                     </Button>
                   </div>}
+                {cert.title === "BMO AI for All" && <div className="mb-4">
+                    <Button variant="outline" size="sm" onClick={e => {
+                e.preventDefault();
+                e.stopPropagation();
+                window.open(cert.credentialUrl, '_blank');
+              }} className="hover:text-primary w-full">
+                      <Trophy className="w-4 h-4 mr-2" />
+                      View My Credly Badge from BMO
+                    </Button>
+                  </div>}
                 <div className="flex items-start justify-between mb-2">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300 overflow-hidden">
-                      {cert.title === "IBM Z Xplore Concepts Badge" ? <img src="/lovable-uploads/343292da-0392-43e1-b819-243e9527de88.png" alt="IBM Z Xplore Badge" className="w-full h-full object-cover rounded-lg" /> : <Award className="text-primary" size={20} />}
+                      {cert.title === "IBM Z Xplore Concepts Badge" ? <img src="/lovable-uploads/343292da-0392-43e1-b819-243e9527de88.png" alt="IBM Z Xplore Badge" className="w-full h-full object-cover rounded-lg" /> : cert.title === "BMO AI for All" ? <img src="/lovable-uploads/bmo-ai-for-all-badge.png" alt="BMO AI for All Badge" className="w-full h-full object-cover rounded-lg" /> : <Award className="text-primary" size={20} />}
                     </div>
                     <Badge variant="secondary" className="bg-accent/20 text-accent">
                       {cert.status}

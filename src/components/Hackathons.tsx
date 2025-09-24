@@ -10,17 +10,17 @@ const Hackathons = () => {
     location: "BMO",
     project: "Innovation Sprint Project",
     description: <div className="space-y-2">
-          <div>• <span className="text-blue-400 font-medium">Selected from BMO's Destination Digital innovation sprint</span> to have our idea further developed by the organization</div>
+          <div>• <span className="text-blue-400 font-medium">Selected as the only intern to participate in company-wide hackathon style innovation challenge</span></div>
           <div>• Designed and delivered an <span className="text-blue-400 font-medium">interactive website mockup</span>, <span className="text-blue-400 font-medium">solution architecture diagram</span>, and <span className="text-blue-400 font-medium">video pitch</span>, showcasing the proposed solution's feasibility and impact</div>
           <div>• Collaborated with teammates to prepare and present a <span className="text-blue-400 font-medium">final pitch to top-level BMO executives</span>, earning recognition for innovation and practicality</div>
           <div>• Applied <span className="text-blue-400 font-medium">design thinking</span>, <span className="text-blue-400 font-medium">solution architecture</span>, and <span className="text-blue-400 font-medium">rapid prototyping</span> in a high-pressure, cross-functional environment</div>
         </div>,
     technologies: ["Solution Architecture", "UI/UX Prototyping", "Pitch Development & Delivery", "Design Thinking & Ideation", "Rapid Prototyping"],
     prize: "Executive Recognition",
-    credlyUrl: "https://www.credly.com/badges/your-bmo-badge",
+    credlyUrl: "https://www.credly.com/badges/2724b0e1-b4bb-44d7-ba47-a150d1957d07",
     demoUrl: null,
     githubUrl: null,
-    icon: "/lovable-uploads/ef5fd6ff-e237-4f82-9cab-1aa44d97d84c.png"
+    icon: "/lovable-uploads/bmo-destination-digital-badge.png"
   }, {
     name: "GDSC Hacks 2025",
     position: "Bee My Tutor Project",
@@ -57,58 +57,81 @@ const Hackathons = () => {
       </div>
 
       <div className="space-y-6">
-        {hackathons.map((hackathon, index) => <Card key={index} className="bg-card/50 backdrop-blur-sm border-border hover:shadow-[var(--card-glow)] transition-all duration-300">
-            <CardHeader>
-              <div className="flex items-start justify-between mb-4">
-                <div className="flex items-center gap-4">
-                  <div className="text-4xl">
-                    {hackathon.icon.startsWith('/') ? <img src={hackathon.icon} alt={`${hackathon.name} logo`} className="w-12 h-12 object-contain" /> : hackathon.icon}
+        {hackathons.map((hackathon, index) => {
+          const CardWrapper = hackathon.credlyUrl ? 'a' : 'div';
+          const cardProps = hackathon.credlyUrl 
+            ? { href: hackathon.credlyUrl, target: '_blank', rel: 'noopener noreferrer', className: 'block' }
+            : {};
+          
+          return (
+            <CardWrapper key={index} {...cardProps}>
+              <Card className="bg-card/50 backdrop-blur-sm border-border hover:shadow-[var(--card-glow)] transition-all duration-300 cursor-pointer hover:scale-[1.02]">
+                <CardHeader>
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="flex items-center gap-4">
+                      <div className="text-4xl">
+                        {hackathon.icon.startsWith('/') ? <img src={hackathon.icon} alt={`${hackathon.name} logo`} className="w-12 h-12 object-contain" /> : hackathon.icon}
+                      </div>
+                      <div>
+                        <CardTitle className="text-xl text-primary">{hackathon.name}</CardTitle>
+                        <CardDescription className="text-lg font-semibold text-foreground">
+                          {hackathon.project}
+                        </CardDescription>
+                      </div>
+                    </div>
+                    <div className="flex gap-2">
+                      {index === 0 && hackathon.credlyUrl && <Button variant="outline" size="sm" onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          window.open(hackathon.credlyUrl, '_blank');
+                        }} className="hover:text-primary">
+                          <Trophy className="w-4 h-4 mr-2" />
+                          View My Credly Badge from BMO
+                        </Button>}
+                      {index === 1 && hackathon.githubUrl && <Button variant="outline" size="sm" onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          window.open(hackathon.githubUrl, '_blank');
+                        }} className="hover:text-primary">
+                          <Github className="w-4 h-4 mr-2" />
+                          Source Code
+                        </Button>}
+                      {index === 1 && hackathon.demoUrl && <Button variant="outline" size="sm" onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          window.open(hackathon.demoUrl, '_blank');
+                        }} className="hover:text-primary">
+                          <ExternalLink className="w-4 h-4 mr-2" />
+                          Live Demo
+                        </Button>}
+                    </div>
                   </div>
-                  <div>
-                    <CardTitle className="text-xl text-primary">{hackathon.name}</CardTitle>
-                    <CardDescription className="text-lg font-semibold text-foreground">
-                      {hackathon.project}
-                    </CardDescription>
+                  
+                  <div className="flex justify-between items-center text-sm text-muted-foreground">
+                    <div className="flex items-center gap-2">
+                      <MapPin className="w-4 h-4" />
+                      {hackathon.location}
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Calendar className="w-4 h-4" />
+                      {hackathon.date}
+                    </div>
                   </div>
-                </div>
-                <div className="flex gap-2">
-                  {index === 0 && hackathon.credlyUrl && <Button variant="outline" size="sm" onClick={() => window.open(hackathon.credlyUrl, '_blank')} className="hover:text-primary">
-                      <Trophy className="w-4 h-4 mr-2" />
-                      View My Credly Badge from BMO
-                    </Button>}
-                  {index === 1 && hackathon.githubUrl && <Button variant="outline" size="sm" onClick={() => window.open(hackathon.githubUrl, '_blank')} className="hover:text-primary">
-                      <Github className="w-4 h-4 mr-2" />
-                      Source Code
-                    </Button>}
-                  {index === 1 && hackathon.demoUrl && <Button variant="outline" size="sm" onClick={() => window.open(hackathon.demoUrl, '_blank')} className="hover:text-primary">
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      Live Demo
-                    </Button>}
-                </div>
-              </div>
-              
-              <div className="flex justify-between items-center text-sm text-muted-foreground">
-                <div className="flex items-center gap-2">
-                  <MapPin className="w-4 h-4" />
-                  {hackathon.location}
-                </div>
-                <div className="flex items-center gap-2">
-                  <Calendar className="w-4 h-4" />
-                  {hackathon.date}
-                </div>
-              </div>
-            </CardHeader>
-            
-            <CardContent className="space-y-4">
-              <div className="text-foreground leading-relaxed">{hackathon.description}</div>
-              
-              <div className="flex flex-wrap gap-2">
-                {hackathon.technologies.map(tech => <Badge key={tech} variant="secondary" className="text-xs">
-                    {tech}
-                  </Badge>)}
-              </div>
-            </CardContent>
-          </Card>)}
+                </CardHeader>
+                
+                <CardContent className="space-y-4">
+                  <div className="text-foreground leading-relaxed">{hackathon.description}</div>
+                  
+                  <div className="flex flex-wrap gap-2">
+                    {hackathon.technologies.map(tech => <Badge key={tech} variant="secondary" className="text-xs">
+                        {tech}
+                      </Badge>)}
+                  </div>
+                </CardContent>
+              </Card>
+            </CardWrapper>
+          );
+        })}
       </div>
     </div>;
 };
