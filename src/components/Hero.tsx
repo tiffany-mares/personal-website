@@ -22,7 +22,7 @@ const Hero = () => {
                 <div className="animate-fade-in-delay" style={{
                 animationDelay: '0.2s'
               }}>
-                  Cloud Developer ☁️
+                AWS Cloud Club Captain ☁️
                 </div>
                 <div className="animate-fade-in-delay" style={{
                 animationDelay: '0.4s'
