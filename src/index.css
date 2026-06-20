@@ -1,111 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=VT323&family=Press+Start+2P&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Personal Website Design System - Tech-forward dark theme with light blue accents */
+/* Personal Website Design System - Retro pixel-art "blue hour" sky */
 
 @layer base {
   :root {
-    /* Light mode - clean and professional */
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    
-    --hero-gradient: linear-gradient(135deg, hsl(210 20% 98%) 0%, hsl(220 14% 96%) 50%, hsl(210 20% 98%) 100%);
-    --accent-gradient: linear-gradient(135deg, hsl(200 70% 70%) 0%, hsl(210 75% 75%) 100%);
-    --glow-blue: 200 70% 50%;
-    --glow-light-blue: 210 60% 60%;
-    
-    --profile-glow: 0 0 40px hsl(var(--glow-blue) / 0.2), 0 0 80px hsl(var(--glow-blue) / 0.1);
-    --card-glow: 0 0 30px hsl(var(--glow-blue) / 0.1);
-    --text-glow: 0 0 20px hsl(var(--glow-blue) / 0.4);
-    
-    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-bounce: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    --background: 220 16% 96%;
+    --foreground: 220 14% 20%;
+
+    /* Sky tokens (themed background only) */
+    --night: 222 65% 10%;
+    --night-2: 220 60% 20%;
+    --sky-day: 320 70% 90%;
+
+    /* Neutral UI palette (text + components) */
+    --periwinkle: 220 13% 85%;
+    --lavender: 220 14% 90%;
+    --blush: 220 16% 95%;
+    /* Single light-blue accent, used sparingly for highlighted words + accents.
+       (Mapped to the `pink`/`text-pink` Tailwind token already used for highlights.) */
+    --pink: 202 80% 47%;
+    --peach: 220 16% 92%;
+    --sun: 45 22% 82%;
+    --navy: 220 14% 23%;
+
+    --brand-gradient: linear-gradient(135deg, hsl(220 16% 94%) 0%, hsl(220 14% 86%) 100%);
+    --pixel-shadow: 4px 4px 0 0 hsl(var(--navy));
+    --pixel-shadow-sm: 2px 2px 0 0 hsl(var(--navy));
+    --card-glow: 4px 4px 0 0 hsl(var(--navy));
+    --text-glow: none;
+    --profile-glow: 6px 6px 0 0 hsl(var(--navy));
+
+    --transition-smooth: all 0.2s steps(4, end);
+    --transition-bounce: all 0.3s steps(5, end);
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 220 14% 20%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 220 14% 20%;
 
-    --primary: 200 70% 50%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 220 14% 25%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222.2 84% 4.9%;
+    --secondary: 220 14% 92%;
+    --secondary-foreground: 220 14% 22%;
 
-    --muted: 210 40% 96%;
-    --muted-foreground: 215.4 16.3% 35%;
+    --muted: 220 14% 93%;
+    --muted-foreground: 220 10% 42%;
 
-    --accent: 210 40% 96%;
-    --accent-foreground: 222.2 84% 4.9%;
+    --accent: 220 14% 88%;
+    --accent-foreground: 220 14% 20%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 75% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 200 70% 50%;
+    --border: 220 14% 23%;
+    --input: 220 12% 72%;
+    --ring: 220 14% 25%;
 
-    --radius: 0.5rem;
+    --radius: 0.2rem;
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 220 14% 22%;
+    --sidebar-primary: 220 14% 25%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 14% 88%;
+    --sidebar-accent-foreground: 220 14% 20%;
+    --sidebar-border: 220 14% 23%;
+    --sidebar-ring: 220 14% 25%;
   }
 
+  /* Toggle removed - dark class mirrors the single neutral palette */
   .dark {
-    /* Dark mode - space theme with purple accents */
-    --background: 220 26% 6%;
-    --foreground: 210 40% 98%;
-    
-    --hero-gradient: linear-gradient(135deg, hsl(220 26% 6%) 0%, hsl(220 30% 8%) 50%, hsl(220 26% 6%) 100%);
-    --accent-gradient: linear-gradient(135deg, hsl(270 95% 75%) 0%, hsl(280 100% 70%) 100%);
-    --glow-blue: 270 95% 75%;
-    --glow-light-blue: 280 100% 70%;
-    
-    --profile-glow: 0 0 40px hsl(270 95% 75% / 0.4), 0 0 80px hsl(270 95% 75% / 0.15);
-    --card-glow: 0 0 30px hsl(270 95% 75% / 0.15);
-    --text-glow: 0 0 20px hsl(270 95% 75% / 0.6);
-    
-    --card: 220 30% 8%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 220 30% 8%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 270 95% 75%;
-    --primary-foreground: 220 26% 6%;
-
-    --secondary: 220 30% 12%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 220 30% 12%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 270 95% 75%;
-    --accent-foreground: 220 26% 6%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 220 30% 15%;
-    --input: 220 30% 15%;
-    --ring: 270 95% 75%;
-
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --background: 220 16% 96%;
+    --foreground: 220 14% 20%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 14% 20%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 14% 20%;
+    --primary: 220 14% 25%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 14% 92%;
+    --secondary-foreground: 220 14% 22%;
+    --muted: 220 14% 93%;
+    --muted-foreground: 220 10% 42%;
+    --accent: 220 14% 88%;
+    --accent-foreground: 220 14% 20%;
+    --destructive: 0 75% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 14% 23%;
+    --input: 220 12% 72%;
+    --ring: 220 14% 25%;
   }
 }
 
@@ -115,136 +104,188 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
+    font-family: 'Nunito', system-ui, sans-serif;
+    background-color: hsl(197 88% 89%);
+    background-image: linear-gradient(
+      to bottom,
+      hsl(222 65% 10%) 0%,
+      hsl(220 60% 20%) 12%,
+      hsl(216 62% 34%) 30%,
+      hsl(210 65% 48%) 48%,
+      hsl(205 72% 62%) 66%,
+      hsl(200 80% 77%) 83%,
+      hsl(197 88% 89%) 100%
+    );
+    background-repeat: no-repeat;
     min-height: 100vh;
     position: relative;
     overflow-x: hidden;
   }
-  
-  /* Space-like background with floating particles */
-  body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: 
-      radial-gradient(2px 2px at 20px 30px, #ffffff20, transparent),
-      radial-gradient(2px 2px at 40px 70px, #ffffff15, transparent),
-      radial-gradient(1px 1px at 90px 40px, #ffffff25, transparent),
-      radial-gradient(1px 1px at 130px 80px, #ffffff10, transparent),
-      radial-gradient(2px 2px at 160px 30px, #ffffff20, transparent),
-      radial-gradient(1px 1px at 200px 90px, #ffffff15, transparent),
-      radial-gradient(2px 2px at 240px 50px, #ffffff25, transparent),
-      radial-gradient(1px 1px at 280px 10px, #ffffff10, transparent),
-      radial-gradient(1px 1px at 320px 70px, #ffffff20, transparent),
-      radial-gradient(2px 2px at 360px 40px, #ffffff15, transparent);
-    background-repeat: repeat;
-    background-size: 400px 400px;
-    animation: float 20s linear infinite;
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0;
+
+  h1, h2, h3, .font-pixel {
+    font-family: 'VT323', 'Nunito', monospace;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    -webkit-font-smoothing: antialiased;
   }
-  
-  .dark body::before {
-    opacity: 1;
+}
+
+@layer components {
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--brand-gradient);
   }
-  
-  body::after {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: 
-      radial-gradient(1px 1px at 60px 20px, #ffffff10, transparent),
-      radial-gradient(1px 1px at 100px 60px, #ffffff15, transparent),
-      radial-gradient(2px 2px at 140px 90px, #ffffff08, transparent),
-      radial-gradient(1px 1px at 180px 30px, #ffffff20, transparent),
-      radial-gradient(2px 2px at 220px 80px, #ffffff12, transparent),
-      radial-gradient(1px 1px at 260px 50px, #ffffff18, transparent),
-      radial-gradient(1px 1px at 300px 20px, #ffffff10, transparent),
-      radial-gradient(2px 2px at 340px 70px, #ffffff15, transparent);
-    background-repeat: repeat;
-    background-size: 450px 450px;
-    animation: float 25s linear infinite reverse;
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0;
+
+  .gradient-divider {
+    height: 0.3rem;
+    border-radius: 0;
+    background-image: var(--brand-gradient);
+    box-shadow: var(--pixel-shadow-sm);
   }
-  
-  .dark body::after {
-    opacity: 1;
+
+  /* Retro Windows-95 style panel */
+  .retro-window {
+    @apply bg-card text-card-foreground;
+    border: 3px solid hsl(var(--navy));
+    border-radius: 0.2rem;
+    box-shadow: var(--pixel-shadow);
   }
-  
-  /* Ensure content is above background */
-  main, section, div {
-    position: relative;
-    z-index: 1;
+
+  .retro-titlebar {
+    @apply flex items-center justify-between gap-2 px-3 py-1.5 font-pixel text-base;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: hsl(var(--navy));
+    background-image: var(--brand-gradient);
+    border-bottom: 3px solid hsl(var(--navy));
   }
-  
+
+  .retro-window-controls {
+    @apply flex items-center gap-1 font-pixel text-xs leading-none;
+    color: hsl(var(--navy));
+  }
+
+  /* Retro banner used for section titles so they read on any sky shade */
+  .retro-banner {
+    @apply inline-block font-pixel px-5 py-2;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: hsl(var(--navy));
+    background-image: var(--brand-gradient);
+    border: 3px solid hsl(var(--navy));
+    border-radius: 0.2rem;
+    box-shadow: var(--pixel-shadow);
+  }
+
+  .retro-btn {
+    @apply inline-flex items-center justify-center font-pixel px-4 py-2 transition-transform;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: hsl(var(--navy));
+    background: hsl(var(--card));
+    border: 3px solid hsl(var(--navy));
+    border-radius: 0.2rem;
+    box-shadow: var(--pixel-shadow-sm);
+  }
+  .retro-btn:hover {
+    background: hsl(var(--blush));
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0 0 hsl(var(--navy));
+  }
+  .retro-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: none;
+  }
+
+  .retro-badge {
+    @apply inline-flex items-center text-xs font-bold uppercase tracking-wide px-2 py-0.5;
+    font-family: 'Nunito', system-ui, sans-serif;
+    color: hsl(var(--navy));
+    background: hsl(var(--lavender) / 0.5);
+    border: 2px solid hsl(var(--navy));
+    border-radius: 0.2rem;
+  }
+
+  /* Sticker sprite cropper for public/retro/stickers.png (2x2 grid) */
+  .sticker {
+    display: inline-block;
+    background-image: url('/retro/stickers.png');
+    background-size: 200% 200%;
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+  }
+  .sticker-cassette { background-position: 0% 0%; }
+  .sticker-floppy { background-position: 100% 0%; }
+  .sticker-cherry { background-position: 0% 100%; }
+  .sticker-smiley { background-position: 100% 100%; }
+}
+
+@layer utilities {
+  .pixelated {
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+  }
+
   .animate-glow {
-    animation: glow 2s ease-in-out infinite alternate;
+    animation: none;
   }
-  
+
   .animate-float {
     animation: float 6s ease-in-out infinite;
   }
-  
+
   .animate-slide-up {
     animation: slideUp 0.8s ease-out forwards;
   }
-  
+
   .animate-fade-in-delay {
+    opacity: 0;
     animation: fadeInDelay 0.8s ease-out forwards;
+  }
+
+  .animate-gradient-pan {
+    background-size: 200% auto;
+    animation: gradientPan 5s linear infinite;
+  }
+
+  .animate-twinkle {
+    animation: twinkle 3s steps(2, end) infinite;
+  }
+
+  .animate-drift {
+    animation: drift 60s linear infinite;
   }
 }
 
-@keyframes glow {
-  from {
-    text-shadow: var(--text-glow);
-  }
+@keyframes gradientPan {
   to {
-    text-shadow: 0 0 30px hsl(var(--glow-blue) / 0.9);
+    background-position: 200% center;
   }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; }
+}
+
+@keyframes drift {
+  from { transform: translateX(-10vw); }
+  to { transform: translateX(110vw); }
 }
 
 @keyframes float {
-  0% {
-    transform: translateX(0px) translateY(0px);
-  }
-  33% {
-    transform: translateX(-30px) translateY(-30px);
-  }
-  66% {
-    transform: translateX(20px) translateY(-20px);
-  }
-  100% {
-    transform: translateX(0px) translateY(0px);
-  }
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-16px); }
 }
 
 @keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(60px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(60px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes fadeInDelay {
-  0% {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
 }

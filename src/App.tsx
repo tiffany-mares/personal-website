@@ -11,12 +11,12 @@ import Navigation from "./components/Navigation";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Experience from "./components/Experience";
-import Skills from "./components/Skills";
 import Certifications from "./components/Certifications";
 import Contact from "./components/Contact";
 import Projects from "./components/Projects";
 import Organizations from "./components/Organizations";
-import Hackathons from "./components/Hackathons";
+import Blog from "./components/Blog";
+import SkyBackground from "./components/SkyBackground";
 
 const queryClient = new QueryClient();
 
@@ -25,7 +25,7 @@ const App = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["home", "about", "experience", "skills", "certifications", "projects", "organizations", "hackathons", "contact"];
+      const sections = ["home", "about", "experience", "projects", "organizations", "certifications", "blog", "contact"];
       const scrollPosition = window.scrollY + 100; // Offset for navigation
 
       for (const section of sections) {
@@ -59,14 +59,15 @@ const App = () => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider defaultTheme="dark" storageKey="portfolio-theme">
+      <ThemeProvider defaultTheme="light" storageKey="portfolio-theme">
         <TooltipProvider>
           <Toaster />
           <Sonner />
           <BrowserRouter>
           <Routes>
             <Route path="/" element={
-              <div className="min-h-screen">
+              <div className="relative min-h-screen overflow-x-hidden">
+                <SkyBackground />
                 <Navigation activeTab={activeTab} onTabChange={scrollToSection} />
                 
                 {/* All sections in one scrollable page */}
@@ -86,18 +87,6 @@ const App = () => {
                   </div>
                 </section>
                 
-                <section id="skills" className="py-20">
-                  <div className="container mx-auto px-6">
-                    <Skills />
-                  </div>
-                </section>
-                
-                <section id="certifications" className="py-20">
-                  <div className="container mx-auto px-6">
-                    <Certifications />
-                  </div>
-                </section>
-                
                 <section id="projects" className="py-20">
                   <div className="container mx-auto px-6">
                     <Projects />
@@ -110,9 +99,15 @@ const App = () => {
                   </div>
                 </section>
                 
-                <section id="hackathons" className="py-20">
+                <section id="certifications" className="py-20">
                   <div className="container mx-auto px-6">
-                    <Hackathons />
+                    <Certifications />
+                  </div>
+                </section>
+                
+                <section id="blog" className="py-20">
+                  <div className="container mx-auto px-6">
+                    <Blog />
                   </div>
                 </section>
                 
@@ -121,6 +116,9 @@ const App = () => {
                     <Contact />
                   </div>
                 </section>
+
+                {/* Spacer so the pixel flower field is fully visible at the very bottom */}
+                <div className="h-64" />
               </div>
             } />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

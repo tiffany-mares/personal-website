@@ -1,43 +1,43 @@
-import { Button } from "@/components/ui/button";
 import { Github, Linkedin, Mail, Download } from "lucide-react";
+import RetroWindow from "@/components/RetroWindow";
 const Hero = () => {
   const handleDownloadResume = () => {
     window.open('https://drive.google.com/file/d/1WCdAT-Iv0blMzV7670c-2ecVWEoAZx6D/view?usp=sharing', '_blank');
   };
   return <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      <div className="container mx-auto px-6 py-20">
+      <div className="container mx-auto px-6 py-28">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
           {/* Text Content */}
           <div className="flex-1 text-center lg:text-left animate-slide-up">
             <div className="space-y-6">
-              <div className="text-lg text-primary animate-glow">
-                Hi there 👋
+              <div className="inline-flex items-center gap-2 font-pixel text-xs px-3 py-1.5 rounded-sm bg-card text-navy border-2 border-navy shadow-pixel-sm">
+                Hi there, welcome to my world
               </div>
               
-              <h1 className="text-5xl lg:text-7xl font-bold">
-                I'm <span className="text-primary animate-glow">Tiffany Mares 👩🏻‍💻</span>
+              <h1 className="font-pixel text-5xl lg:text-7xl font-bold text-white leading-tight" style={{ textShadow: '3px 3px 0 hsl(var(--navy))' }}>
+                I'm <span className="text-white/80">Tiffany Mares</span>
               </h1>
               
-              <div className="space-y-2 text-xl lg:text-2xl text-muted-foreground">
+              <div className="space-y-2 text-lg lg:text-xl text-white/90 font-semibold">
                 <div className="animate-fade-in-delay" style={{
                 animationDelay: '0.2s'
               }}>
-                AWS Cloud Club Captain ☁️
+                AWS Cloud Club Captain
                 </div>
                 <div className="animate-fade-in-delay" style={{
                 animationDelay: '0.4s'
-              }}>IBM Z Student Ambassador ⚡</div>
+              }}>IBM Z Student Ambassador</div>
                 <div className="animate-fade-in-delay" style={{
                 animationDelay: '0.6s'
               }}>
-                  Student Leader 🗣️
+                  Student Leader
                 </div>
               </div>
               
               <div className="flex flex-wrap gap-3 justify-center lg:justify-start animate-fade-in-delay" style={{
               animationDelay: '0.8s'
             }}>
-                {["Azure/AWS", "IBM Z", "AI/Machine Learning"].map(skill => <span key={skill} className="px-4 py-2 rounded-full border border-primary/30 text-primary hover:bg-primary/10 transition-colors duration-300">
+                {["Azure/AWS", "IBM Z", "AI/Machine Learning"].map((skill, i) => <span key={skill} className={`font-pixel text-xs px-3 py-1.5 rounded-sm text-navy border-2 border-navy shadow-pixel-sm ${i === 0 ? 'bg-periwinkle' : i === 1 ? 'bg-lavender' : 'bg-blush'}`}>
                     {skill}
                   </span>)}
               </div>
@@ -45,13 +45,13 @@ const Hero = () => {
               <div className="flex justify-center lg:justify-start animate-fade-in-delay" style={{
               animationDelay: '1s'
             }}>
-                <Button onClick={handleDownloadResume} variant="outline" className="border-primary text-primary hover:bg-primary/10 hover:shadow-[0_0_20px_hsl(var(--primary)/0.3)] transition-all duration-300">
+                <button onClick={handleDownloadResume} className="retro-btn text-sm bg-[image:var(--brand-gradient)]">
                   <Download className="w-4 h-4 mr-2" />
                   RESUME
-                </Button>
+                </button>
               </div>
               
-              <div className="flex gap-6 justify-center lg:justify-start animate-fade-in-delay" style={{
+              <div className="flex gap-4 justify-center lg:justify-start animate-fade-in-delay" style={{
               animationDelay: '1.2s'
             }}>
                 {[{
@@ -70,21 +70,20 @@ const Hero = () => {
                 icon: Icon,
                 href,
                 label
-              }) => <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-all duration-300 hover:animate-glow hover:scale-110 hover:shadow-[0_0_15px_hsl(var(--primary)/0.4)]" aria-label={label}>
-                    <Icon size={24} />
+              }) => <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="p-2 rounded-sm bg-card text-navy border-2 border-navy shadow-pixel-sm hover:bg-blush hover:-translate-y-0.5 transition-all duration-150" aria-label={label}>
+                    <Icon size={22} />
                   </a>)}
               </div>
             </div>
           </div>
           
-          {/* Profile Image */}
+          {/* Profile Image inside a retro window */}
           <div className="flex-1 flex justify-center animate-float">
-            <div className="relative">
-              <div className="w-80 h-80 rounded-full overflow-hidden border-4 border-primary/30 shadow-[var(--profile-glow)] hover:shadow-[0_0_60px_hsl(var(--primary)/0.4)] transition-all duration-500">
+            <RetroWindow title="tiffany.png" className="w-[330px]" bodyClassName="p-2 bg-blush/40">
+              <div className="w-full aspect-square overflow-hidden border-2 border-navy">
                 <img src="/lovable-uploads/467b2968-e1f4-4b49-8b72-2cae00f81826.png" alt="Tiffany Mares" className="w-full h-full object-cover" />
               </div>
-              <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-primary/20 to-transparent pointer-events-none"></div>
-            </div>
+            </RetroWindow>
           </div>
         </div>
       </div>

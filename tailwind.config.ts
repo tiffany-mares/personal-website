@@ -24,6 +24,14 @@ export default {
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
+				night: 'hsl(var(--night))',
+				periwinkle: 'hsl(var(--periwinkle))',
+				lavender: 'hsl(var(--lavender))',
+				blush: 'hsl(var(--blush))',
+				pink: 'hsl(var(--pink))',
+				peach: 'hsl(var(--peach))',
+				sun: 'hsl(var(--sun))',
+				navy: 'hsl(var(--navy))',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))'
@@ -68,6 +76,16 @@ export default {
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
 			},
+			fontFamily: {
+				pixel: ['"VT323"', 'Nunito', 'monospace'],
+				arcade: ['"Press Start 2P"', 'monospace'],
+				sans: ['Nunito', 'system-ui', 'sans-serif']
+			},
+			boxShadow: {
+				pixel: '4px 4px 0 0 hsl(var(--navy))',
+				'pixel-sm': '2px 2px 0 0 hsl(var(--navy))',
+				'pixel-lg': '6px 6px 0 0 hsl(var(--navy))'
+			},
 			keyframes: {
 				'accordion-down': {
 					from: {
@@ -85,13 +103,9 @@ export default {
 						height: '0'
 					}
 				},
-				glow: {
-					'0%': { textShadow: 'var(--text-glow)' },
-					'100%': { textShadow: '0 0 30px hsl(var(--glow-blue) / 0.9)' }
-				},
 				float: {
 					'0%, 100%': { transform: 'translateY(0px)' },
-					'50%': { transform: 'translateY(-20px)' }
+					'50%': { transform: 'translateY(-16px)' }
 				},
 				slideUp: {
 					'0%': { opacity: '0', transform: 'translateY(60px)' },
@@ -100,15 +114,24 @@ export default {
 				fadeInDelay: {
 					'0%': { opacity: '0', transform: 'translateY(30px)' },
 					'100%': { opacity: '1', transform: 'translateY(0)' }
+				},
+				twinkle: {
+					'0%, 100%': { opacity: '1' },
+					'50%': { opacity: '0.25' }
+				},
+				drift: {
+					from: { transform: 'translateX(-10vw)' },
+					to: { transform: 'translateX(110vw)' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				'glow': 'glow 2s ease-in-out infinite alternate',
 				'float': 'float 6s ease-in-out infinite',
 				'slide-up': 'slideUp 0.8s ease-out forwards',
-				'fade-in-delay': 'fadeInDelay 0.8s ease-out forwards'
+				'fade-in-delay': 'fadeInDelay 0.8s ease-out forwards',
+				'twinkle': 'twinkle 3s steps(2, end) infinite',
+				'drift': 'drift 60s linear infinite'
 			}
 		}
 	},
