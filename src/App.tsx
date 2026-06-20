@@ -16,46 +16,27 @@ import Contact from "./components/Contact";
 import Projects from "./components/Projects";
 import Organizations from "./components/Organizations";
 import Blog from "./components/Blog";
-import SkyBackground from "./components/SkyBackground";
 
 const queryClient = new QueryClient();
+
+const sectionComponents: Record<string, JSX.Element> = {
+  home: <Hero />,
+  about: <About />,
+  experience: <Experience />,
+  projects: <Projects />,
+  organizations: <Organizations />,
+  certifications: <Certifications />,
+  blog: <Blog />,
+  contact: <Contact />
+};
 
 const App = () => {
   const [activeTab, setActiveTab] = useState("home");
 
+  // Each tab behaves like its own page: jump to the top when switching.
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = ["home", "about", "experience", "projects", "organizations", "certifications", "blog", "contact"];
-      const scrollPosition = window.scrollY + 100; // Offset for navigation
-
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const { offsetTop, offsetHeight } = element;
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveTab(section);
-            break;
-          }
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      const offset = 80; // Account for fixed navigation
-      const elementPosition = element.offsetTop - offset;
-      window.scrollTo({
-        top: elementPosition,
-        behavior: "smooth"
-      });
-    }
-    setActiveTab(id);
-  };
+    window.scrollTo({ top: 0 });
+  }, [activeTab]);
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -66,59 +47,23 @@ const App = () => {
           <BrowserRouter>
           <Routes>
             <Route path="/" element={
-              <div className="relative min-h-screen overflow-x-hidden">
-                <SkyBackground />
-                <Navigation activeTab={activeTab} onTabChange={scrollToSection} />
-                
-                {/* All sections in one scrollable page */}
-                <section id="home">
-                  <Hero />
-                </section>
-                
-                <section id="about" className="py-20">
-                  <div className="container mx-auto px-6">
-                    <About />
-                  </div>
-                </section>
-                
-                <section id="experience" className="py-20">
-                  <div className="container mx-auto px-6">
-                    <Experience />
-                  </div>
-                </section>
-                
-                <section id="projects" className="py-20">
-                  <div className="container mx-auto px-6">
-                    <Projects />
-                  </div>
-                </section>
-                
-                <section id="organizations" className="py-20">
-                  <div className="container mx-auto px-6">
-                    <Organizations />
-                  </div>
-                </section>
-                
-                <section id="certifications" className="py-20">
-                  <div className="container mx-auto px-6">
-                    <Certifications />
-                  </div>
-                </section>
-                
-                <section id="blog" className="py-20">
-                  <div className="container mx-auto px-6">
-                    <Blog />
-                  </div>
-                </section>
-                
-                <section id="contact" className="py-20">
-                  <div className="container mx-auto px-6">
-                    <Contact />
-                  </div>
-                </section>
+              <div className="min-h-screen overflow-x-hidden bg-background">
+                <Navigation activeTab={activeTab} onTabChange={setActiveTab} />
 
-                {/* Spacer so the pixel flower field is fully visible at the very bottom */}
-                <div className="h-64" />
+                {/* Each tab is its own standalone page on a simple background. */}
+                <main>
+                  {activeTab === "home" ? (
+                    <div key={activeTab} className="animate-fade-in-delay">
+                      {sectionComponents.home}
+                    </div>
+                  ) : (
+                    <div key={activeTab} className="flex min-h-screen flex-col justify-center animate-fade-in-delay">
+                      <div className="container mx-auto w-full px-6 pb-16 pt-28">
+                        {sectionComponents[activeTab]}
+                      </div>
+                    </div>
+                  )}
+                </main>
               </div>
             } />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

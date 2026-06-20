@@ -14,11 +14,11 @@ const Hero = () => {
                 Hi there, welcome to my world
               </div>
               
-              <h1 className="font-pixel text-5xl lg:text-7xl font-bold text-white leading-tight" style={{ textShadow: '3px 3px 0 hsl(var(--navy))' }}>
-                I'm <span className="text-white/80">Tiffany Mares</span>
+              <h1 className="font-pixel text-5xl lg:text-7xl font-bold text-navy leading-tight" style={{ textShadow: '3px 3px 0 hsl(var(--periwinkle))' }}>
+                I'm <span className="text-pink">Tiffany Mares</span>
               </h1>
               
-              <div className="space-y-2 text-lg lg:text-xl text-white/90 font-semibold">
+              <div className="space-y-2 text-lg lg:text-xl text-navy/80 font-semibold">
                 <div className="animate-fade-in-delay" style={{
                 animationDelay: '0.2s'
               }}>

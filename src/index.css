@@ -104,22 +104,9 @@
   }
 
   body {
-    @apply text-foreground;
+    @apply bg-background text-foreground;
     font-family: 'Nunito', system-ui, sans-serif;
-    background-color: hsl(197 88% 89%);
-    background-image: linear-gradient(
-      to bottom,
-      hsl(222 65% 10%) 0%,
-      hsl(220 60% 20%) 12%,
-      hsl(216 62% 34%) 30%,
-      hsl(210 65% 48%) 48%,
-      hsl(205 72% 62%) 66%,
-      hsl(200 80% 77%) 83%,
-      hsl(197 88% 89%) 100%
-    );
-    background-repeat: no-repeat;
     min-height: 100vh;
-    position: relative;
     overflow-x: hidden;
   }
 
