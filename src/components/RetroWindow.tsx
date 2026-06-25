@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import Typewriter from "@/components/Typewriter";
 
 interface RetroWindowProps {
   title: string;
@@ -22,12 +23,7 @@ const RetroWindow = ({ title, children, className, bodyClassName, onClick }: Ret
       onClick={onClick}
     >
       <div className="retro-titlebar">
-        <span className="truncate">{title}</span>
-        <span className="retro-window-controls shrink-0" aria-hidden="true">
-          <span className="inline-flex h-3.5 w-3.5 items-center justify-center border-2 border-navy bg-card leading-none">_</span>
-          <span className="inline-flex h-3.5 w-3.5 items-center justify-center border-2 border-navy bg-card leading-none">▢</span>
-          <span className="inline-flex h-3.5 w-3.5 items-center justify-center border-2 border-navy bg-card leading-none">×</span>
-        </span>
+        <Typewriter text={title} className="truncate" />
       </div>
       <div className={cn("p-6", bodyClassName)}>{children}</div>
     </div>

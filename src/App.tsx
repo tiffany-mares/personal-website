@@ -15,28 +15,51 @@ import Certifications from "./components/Certifications";
 import Contact from "./components/Contact";
 import Projects from "./components/Projects";
 import Organizations from "./components/Organizations";
-import Blog from "./components/Blog";
+import Hackathons from "./components/Hackathons";
+import BackgroundParticles from "./components/BackgroundParticles";
 
 const queryClient = new QueryClient();
 
-const sectionComponents: Record<string, JSX.Element> = {
-  home: <Hero />,
-  about: <About />,
-  experience: <Experience />,
-  projects: <Projects />,
-  organizations: <Organizations />,
-  certifications: <Certifications />,
-  blog: <Blog />,
-  contact: <Contact />
-};
+const sectionOrder = [
+  "home",
+  "about",
+  "experience",
+  "projects",
+  "organizations",
+  "hackathons",
+  "certifications",
+  "contact"
+];
 
 const App = () => {
   const [activeTab, setActiveTab] = useState("home");
 
-  // Each tab behaves like its own page: jump to the top when switching.
+  // Scroll-spy: highlight the tab for whichever section is in view.
   useEffect(() => {
-    window.scrollTo({ top: 0 });
-  }, [activeTab]);
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + 120;
+      for (const section of sectionOrder) {
+        const element = document.getElementById(section);
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            setActiveTab(section);
+            break;
+          }
+        }
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      window.scrollTo({ top: element.offsetTop - 72, behavior: "smooth" });
+    }
+    setActiveTab(id);
+  };
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -47,23 +70,56 @@ const App = () => {
           <BrowserRouter>
           <Routes>
             <Route path="/" element={
-              <div className="min-h-screen overflow-x-hidden bg-background">
-                <Navigation activeTab={activeTab} onTabChange={setActiveTab} />
+              <div className="relative isolate min-h-screen overflow-x-hidden bg-background">
+                <BackgroundParticles />
+                <Navigation activeTab={activeTab} onTabChange={scrollToSection} />
 
-                {/* Each tab is its own standalone page on a simple background. */}
-                <main>
-                  {activeTab === "home" ? (
-                    <div key={activeTab} className="animate-fade-in-delay">
-                      {sectionComponents.home}
-                    </div>
-                  ) : (
-                    <div key={activeTab} className="flex min-h-screen flex-col justify-center animate-fade-in-delay">
-                      <div className="container mx-auto w-full px-6 pb-16 pt-28">
-                        {sectionComponents[activeTab]}
-                      </div>
-                    </div>
-                  )}
-                </main>
+                {/* All sections stacked into one continuously scrollable page. */}
+                <section id="home">
+                  <Hero />
+                </section>
+
+                <section id="about" className="py-20">
+                  <div className="container mx-auto px-6">
+                    <About />
+                  </div>
+                </section>
+
+                <section id="experience" className="py-20">
+                  <div className="container mx-auto px-6">
+                    <Experience />
+                  </div>
+                </section>
+
+                <section id="projects" className="py-20">
+                  <div className="container mx-auto px-6">
+                    <Projects />
+                  </div>
+                </section>
+
+                <section id="organizations" className="py-20">
+                  <div className="container mx-auto px-6">
+                    <Organizations />
+                  </div>
+                </section>
+
+                <section id="hackathons" className="py-20">
+                  <div className="container mx-auto px-6">
+                    <Hackathons />
+                  </div>
+                </section>
+
+                <section id="certifications" className="py-20">
+                  <div className="container mx-auto px-6">
+                    <Certifications />
+                  </div>
+                </section>
+
+                <section id="contact" className="py-20">
+                  <div className="container mx-auto px-6">
+                    <Contact />
+                  </div>
+                </section>
               </div>
             } />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

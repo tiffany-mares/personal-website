@@ -1,5 +1,6 @@
 import { Calendar, MapPin, ExternalLink } from "lucide-react";
 import RetroWindow from "@/components/RetroWindow";
+import TypewriterTitle from "@/components/TypewriterTitle";
 
 const Organizations = () => {
   const organizations = [
@@ -85,11 +86,7 @@ const Organizations = () => {
   return (
     <div className="space-y-10">
       <div className="text-center space-y-4">
-        <h2 className="retro-banner text-3xl md:text-4xl">Leadership</h2>
-        <p className="text-navy font-semibold max-w-2xl mx-auto bg-card/70 border-2 border-navy rounded-sm px-4 py-2 shadow-pixel-sm">
-          My leadership roles and involvement in academic and professional organizations that drive innovation
-          and promote diversity in technology.
-        </p>
+        <TypewriterTitle text="Leadership" className="retro-banner text-3xl md:text-4xl" />
       </div>
 
       <div className="space-y-6">

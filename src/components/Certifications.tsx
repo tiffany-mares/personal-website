@@ -1,5 +1,6 @@
 import { Award, Calendar, ExternalLink, Trophy } from "lucide-react";
 import RetroWindow from "@/components/RetroWindow";
+import TypewriterTitle from "@/components/TypewriterTitle";
 const Certifications = () => {
   const certifications = [{
     title: "IBM Z Xplore Concepts Badge",
@@ -24,7 +25,7 @@ const Certifications = () => {
   }];
   return <div>
       <div className="text-center mb-12">
-        <h2 className="retro-banner text-3xl md:text-4xl">Certifications</h2>
+        <TypewriterTitle text="Certifications" className="retro-banner text-3xl md:text-4xl" />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">

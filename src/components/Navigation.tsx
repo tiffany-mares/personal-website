@@ -41,11 +41,11 @@ const Navigation = ({
     value: "organizations",
     label: "Leadership"
   }, {
+    value: "hackathons",
+    label: "Hackathons"
+  }, {
     value: "certifications",
     label: "Certifications"
-  }, {
-    value: "blog",
-    label: "Blog"
   }, {
     value: "contact",
     label: "Contact"

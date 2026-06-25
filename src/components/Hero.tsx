@@ -1,45 +1,34 @@
 import { Github, Linkedin, Mail, Download } from "lucide-react";
+import { ReactTyped } from "react-typed";
 import RetroWindow from "@/components/RetroWindow";
 const Hero = () => {
   const handleDownloadResume = () => {
     window.open('https://drive.google.com/file/d/1WCdAT-Iv0blMzV7670c-2ecVWEoAZx6D/view?usp=sharing', '_blank');
   };
   return <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      <div className="container mx-auto px-6 py-28">
+      <div className="container mx-auto px-6 py-28 relative z-10">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
           {/* Text Content */}
           <div className="flex-1 text-center lg:text-left animate-slide-up">
             <div className="space-y-6">
-              <div className="inline-flex items-center gap-2 font-pixel text-xs px-3 py-1.5 rounded-sm bg-card text-navy border-2 border-navy shadow-pixel-sm">
-                Hi there, welcome to my world
-              </div>
-              
               <h1 className="font-pixel text-5xl lg:text-7xl font-bold text-navy leading-tight" style={{ textShadow: '3px 3px 0 hsl(var(--periwinkle))' }}>
                 I'm <span className="text-pink">Tiffany Mares</span>
               </h1>
               
-              <div className="space-y-2 text-lg lg:text-xl text-navy/80 font-semibold">
-                <div className="animate-fade-in-delay" style={{
-                animationDelay: '0.2s'
-              }}>
-                AWS Cloud Club Captain
-                </div>
-                <div className="animate-fade-in-delay" style={{
-                animationDelay: '0.4s'
-              }}>IBM Z Student Ambassador</div>
-                <div className="animate-fade-in-delay" style={{
-                animationDelay: '0.6s'
-              }}>
-                  Student Leader
-                </div>
-              </div>
-              
-              <div className="flex flex-wrap gap-3 justify-center lg:justify-start animate-fade-in-delay" style={{
-              animationDelay: '0.8s'
-            }}>
-                {["Azure/AWS", "IBM Z", "AI/Machine Learning"].map((skill, i) => <span key={skill} className={`font-pixel text-xs px-3 py-1.5 rounded-sm text-navy border-2 border-navy shadow-pixel-sm ${i === 0 ? 'bg-periwinkle' : i === 1 ? 'bg-lavender' : 'bg-blush'}`}>
-                    {skill}
-                  </span>)}
+              <div className="text-lg lg:text-2xl text-navy/80 font-semibold animate-fade-in-delay" style={{ animationDelay: '0.2s' }}>
+                <ReactTyped
+                  className="text-pink font-bold"
+                  strings={[
+                    "AWS Cloud Club Captain",
+                    "IBM Z Student Ambassador",
+                    "Cloud Developer",
+                    "Student Leader"
+                  ]}
+                  typeSpeed={55}
+                  backSpeed={35}
+                  backDelay={1600}
+                  loop
+                />
               </div>
               
               <div className="flex justify-center lg:justify-start animate-fade-in-delay" style={{
