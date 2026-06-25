@@ -1,32 +1,14 @@
 import RetroWindow from "@/components/RetroWindow";
+import TypewriterTitle from "@/components/TypewriterTitle";
 
 const About = () => {
-  const highlights = [
-    {
-      title: "Cloud Development",
-      description: "Building intelligent cloud-native applications on Microsoft Azure and AWS"
-    },
-    {
-      title: "Machine Learning",
-      description: "Developing ML solutions using Azure ML and AWS for predictive analytics and generative AI applications"
-    },
-    {
-      title: "Mainframe Expert",
-      description: "IBM Z Student Ambassador with expertise in enterprise systems"
-    },
-    {
-      title: "Student Leader",
-      description: "Leading diverse organizations and fostering inclusive communities"
-    }
-  ];
-
   return (
     <section id="about" className="relative">
       <div className="text-center mb-12">
-        <h2 className="retro-banner text-3xl md:text-4xl">About Me</h2>
+        <TypewriterTitle text="About Me" className="retro-banner text-3xl md:text-4xl" />
       </div>
 
-      <div className="grid lg:grid-cols-2 gap-8 items-start">
+      <div className="max-w-3xl mx-auto">
         <RetroWindow title="about-me.txt">
           <div className="space-y-5">
             <p className="text-base text-card-foreground leading-relaxed">
@@ -52,19 +34,6 @@ const About = () => {
             </p>
           </div>
         </RetroWindow>
-
-        <div className="grid grid-cols-2 gap-4">
-          {highlights.map(({ title, description }) => (
-            <RetroWindow key={title} title={title.toLowerCase().replace(/\s+/g, "-")} bodyClassName="p-4">
-              <div className="text-center space-y-3">
-                <h3 className="font-pixel text-base text-navy">{title}</h3>
-                <p className="text-xs text-card-foreground leading-relaxed">
-                  {description}
-                </p>
-              </div>
-            </RetroWindow>
-          ))}
-        </div>
       </div>
     </section>
   );

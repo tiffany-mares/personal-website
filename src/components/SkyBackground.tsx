@@ -85,7 +85,7 @@ const SkyBackground = () => {
   ];
 
   return (
-    <div className="absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
+    <div className="fixed inset-0 -z-10 overflow-hidden" aria-hidden="true">
       {/* Sky gradient now lives on the body so it always covers the full
           document height (see index.css). This layer holds the overlays. */}
 

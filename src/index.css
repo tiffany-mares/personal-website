@@ -8,7 +8,7 @@
 
 @layer base {
   :root {
-    --background: 220 16% 96%;
+    --background: 200 78% 90%;
     --foreground: 220 14% 20%;
 
     /* Sky tokens (themed background only) */
@@ -17,17 +17,17 @@
     --sky-day: 320 70% 90%;
 
     /* Neutral UI palette (text + components) */
-    --periwinkle: 220 13% 85%;
-    --lavender: 220 14% 90%;
-    --blush: 220 16% 95%;
+    --periwinkle: 270 42% 85%;
+    --lavender: 272 45% 90%;
+    --blush: 280 50% 95%;
     /* Single light-blue accent, used sparingly for highlighted words + accents.
        (Mapped to the `pink`/`text-pink` Tailwind token already used for highlights.) */
     --pink: 202 80% 47%;
-    --peach: 220 16% 92%;
-    --sun: 45 22% 82%;
+    --peach: 275 42% 92%;
+    --sun: 280 40% 85%;
     --navy: 220 14% 23%;
 
-    --brand-gradient: linear-gradient(135deg, hsl(220 16% 94%) 0%, hsl(220 14% 86%) 100%);
+    --brand-gradient: linear-gradient(135deg, hsl(280 55% 93%) 0%, hsl(270 45% 84%) 100%);
     --pixel-shadow: 4px 4px 0 0 hsl(var(--navy));
     --pixel-shadow-sm: 2px 2px 0 0 hsl(var(--navy));
     --card-glow: 4px 4px 0 0 hsl(var(--navy));
@@ -76,7 +76,7 @@
 
   /* Toggle removed - dark class mirrors the single neutral palette */
   .dark {
-    --background: 220 16% 96%;
+    --background: 200 78% 90%;
     --foreground: 220 14% 20%;
     --card: 0 0% 100%;
     --card-foreground: 220 14% 20%;
@@ -104,22 +104,9 @@
   }
 
   body {
-    @apply text-foreground;
+    @apply bg-background text-foreground;
     font-family: 'Nunito', system-ui, sans-serif;
-    background-color: hsl(197 88% 89%);
-    background-image: linear-gradient(
-      to bottom,
-      hsl(222 65% 10%) 0%,
-      hsl(220 60% 20%) 12%,
-      hsl(216 62% 34%) 30%,
-      hsl(210 65% 48%) 48%,
-      hsl(205 72% 62%) 66%,
-      hsl(200 80% 77%) 83%,
-      hsl(197 88% 89%) 100%
-    );
-    background-repeat: no-repeat;
     min-height: 100vh;
-    position: relative;
     overflow-x: hidden;
   }
 

@@ -1,5 +1,6 @@
 import { Github, Linkedin, Mail, Phone, ArrowRight } from "lucide-react";
 import RetroWindow from "@/components/RetroWindow";
+import TypewriterTitle from "@/components/TypewriterTitle";
 const Contact = () => {
   const contactCards = [{
     icon: Mail,
@@ -34,8 +35,7 @@ const Contact = () => {
   }];
   return <section id="contact" className="relative">
       <div className="text-center mb-12">
-        <h2 className="retro-banner text-3xl md:text-4xl">Let's Connect</h2>
-        <p className="text-navy font-semibold max-w-2xl mx-auto bg-card/70 border-2 border-navy rounded-sm px-4 py-2 shadow-pixel-sm mt-6">I'm always open to discussing new opportunities, interesting projects, or just having a great conversation about technology!</p>
+        <TypewriterTitle text="Let's Connect" className="retro-banner text-3xl md:text-4xl" />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
