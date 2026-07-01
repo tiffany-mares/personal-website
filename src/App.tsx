@@ -2,10 +2,8 @@ import { useState, useEffect } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/components/theme-provider";
-import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Navigation from "./components/Navigation";
 import Hero from "./components/Hero";
@@ -17,8 +15,6 @@ import Projects from "./components/Projects";
 import Organizations from "./components/Organizations";
 import Hackathons from "./components/Hackathons";
 import BackgroundParticles from "./components/BackgroundParticles";
-
-const queryClient = new QueryClient();
 
 const sectionOrder = [
   "home",
@@ -62,12 +58,11 @@ const App = () => {
   };
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <ThemeProvider defaultTheme="light" storageKey="portfolio-theme">
-        <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
+    <ThemeProvider defaultTheme="light" storageKey="portfolio-theme">
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
           <Routes>
             <Route path="/" element={
               <div className="relative isolate min-h-screen overflow-x-hidden bg-background">
@@ -127,8 +122,7 @@ const App = () => {
           </Routes>
         </BrowserRouter>
       </TooltipProvider>
-      </ThemeProvider>
-    </QueryClientProvider>
+    </ThemeProvider>
   );
 };
 
