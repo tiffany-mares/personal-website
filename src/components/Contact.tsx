@@ -38,28 +38,32 @@ const Contact = () => {
         <TypewriterTitle text="Let's Connect" className="retro-banner text-3xl md:text-4xl" />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-        {contactCards.map(({
-        icon: Icon,
-        title,
-        description,
-        action,
-        href
-      }) => <a key={title} href={href} target="_blank" rel="noopener noreferrer" className="block">
-              <RetroWindow title={title.toLowerCase().replace(/\s+/g, "-")} bodyClassName="p-6 h-full">
-                <div className="flex flex-col items-center text-center gap-4">
-                  <div className="w-16 h-16 rounded-sm bg-blush border-2 border-navy flex items-center justify-center">
-                    <Icon className="text-navy" size={24} />
+      <div className="max-w-2xl mx-auto">
+        <RetroWindow title="contact" bodyClassName="p-0">
+          <ul className="divide-y-2 divide-navy/15">
+            {contactCards.map(({
+            icon: Icon,
+            title,
+            description,
+            action,
+            href
+          }) => <li key={title}>
+                <a href={href} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 p-4 hover:bg-blush/40 transition-colors duration-150">
+                  <div className="w-12 h-12 flex-shrink-0 rounded-sm bg-blush border-2 border-navy flex items-center justify-center">
+                    <Icon className="text-navy" size={22} />
                   </div>
-                  <h3 className="font-pixel text-base text-navy tracking-wide">{title}</h3>
-                  <p className="text-card-foreground text-sm">{description}</p>
-                  <div className="flex items-center gap-2 text-pink font-bold">
-                    <span className="text-sm truncate max-w-[220px]">{action}</span>
+                  <div className="min-w-0 flex-1">
+                    <h3 className="font-pixel text-base text-navy tracking-wide">{title}</h3>
+                    <p className="text-card-foreground text-sm">{description}</p>
+                  </div>
+                  <div className="flex items-center gap-2 text-pink font-bold flex-shrink-0">
+                    <span className="text-sm truncate max-w-[160px] sm:max-w-[220px]">{action}</span>
                     <ArrowRight size={16} className="flex-shrink-0" />
                   </div>
-                </div>
-              </RetroWindow>
-            </a>)}
+                </a>
+              </li>)}
+          </ul>
+        </RetroWindow>
       </div>
     </section>;
 };
